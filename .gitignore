@@ -1,0 +1,42 @@
+# Node.js dependencies
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+
+# Build output
+/dist
+/build
+
+# IDE and Editor settings
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Coverage directory used by testing tools
+coverage/
+
+# Package distribution
+*.tgz
+
+# Optional npm cache directory
+.npm/
+
+# TypeScript build output
+/lib/
+
+# Debugging and trace files
+*.log
+*.pid
+
+# NVM configuration
+.nvmrc
