@@ -177,3 +177,34 @@ exports.refreshAccessToken = async (req, res) => {
       .json({ message: "Could not refresh token", error: err.message });
   }
 };
+
+/**
+ * User Logout
+ * - Removes the stored refresh token from the database
+ */
+exports.logout = async (req, res) => {
+  try {
+    const { refreshToken } = req.body;
+
+    if (!refreshToken) {
+      return res
+        .status(400)
+        .json({ message: "Refresh token is required for logout." });
+    }
+
+    // Find and remove the refresh token
+    const deletedToken = await RefreshToken.destroy({
+      where: { token: refreshToken },
+    });
+
+    if (!deletedToken) {
+      return res.status(404).json({ message: "Refresh token not found." });
+    }
+
+    return res.status(200).json({ message: "Logged out successfully." });
+  } catch (err) {
+    return res
+      .status(500)
+      .json({ message: "Error logging out", error: err.message });
+  }
+};
